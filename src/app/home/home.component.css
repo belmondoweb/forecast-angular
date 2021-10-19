@@ -1,0 +1,168 @@
+/* 
+//page bg-colore */
+.home-page {
+    background-image: url(../../assets/tel-aviv.jpg);
+    padding: 5%;
+    background-color: rgba(70, 36, 126, 0.747);
+    background-size: cover;
+    background-position: 50%;
+    background-blend-mode: overlay;
+    margin-top: 2%;
+}
+/* // week days  */
+  .card.col-2.days {
+    min-width: 20%;
+    background-color: #f8f9fabf;
+    top:-2px
+}
+.card{
+    width:190px;
+    padding: 15px 22px;
+    text-align: center;
+}  
+
+.card .hover{
+        box-shadow: 2px 2px 12px 1px #e9e4e4;
+        border:none;
+    }
+    /* search */
+    .search-input{
+        width: 100%;
+        padding: 7px 43px;
+        border-radius: 6px;
+        border: 1px ;
+        background: #c7c7c4;
+    }
+    .search-box{
+        position: relative;
+        width:90%;
+    }
+
+/* Weather current highlights  */
+
+.highlight {
+    color: rgba(255, 255, 255, 0.856);
+    display: flex;
+    align-items: center;
+    /* margin-top: 0; */
+    margin-bottom: 8%;
+    position: relative;
+}
+.location {
+    color: rgba(255, 255, 255, 0.719);
+    position: absolute;
+    padding-left: 20px;
+    top: 0;
+    font-size: 40px;
+}
+.temp {
+    font-family: "Kumbh Sans",sans-serif;
+    font-size: 150px;
+    padding-top: 25%;
+ 
+}
+.description {
+    margin-right: auto;
+    display: inline-flex;
+    align-items: center;
+    font-family: "Kumbh Sans", sans-serif;
+    margin-top: 20%;
+}
+.descr{
+    display: inline-flex;
+    width: 200px;
+    font-size: 20px;
+}
+    /* ///// Icone's ///// */
+ .img-icon{
+    position: relative;
+    padding: 12px 0 12px 36px;
+    margin: 20px;
+    display: inline-flex;
+    align-items: center;
+ }
+ .humid, .temp-dc,  .wind {
+    position: relative;
+    padding: 12px 0 12px 36px;
+    font-size: 18px;
+    margin: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+.humid:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -18px;
+    background: url("../../assets/icon-humit.png")no-repeat;
+    background-size: 24px;
+    width: 30px;
+    height: 30px;
+}
+.wind:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -16px;
+    background: url("../../assets/wind.png")no-repeat;
+    background-size: 24px;
+    width: 30px;
+    height: 30px;
+}
+.rain:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -16px;
+    background: url("../../assets/icon-rain.png")no-repeat;
+    background-size: 24px;
+    width: 30px;
+    height: 30px;
+}
+.temp-dc:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -16px;
+    background:url("../../assets/icon-temp.png")no-repeat;
+    background-size: 24px;
+    width: 30px;
+    height: 30px;
+}
+
+.cur-city{
+    color: rgb(252, 245, 250);
+    position: absolute;
+    font-size: 25px;
+    padding-left: 10px;
+    top:30px;
+}
+.main-container {
+    display: grid;
+}
+.main-container {
+    background-color: rgba(0, 0, 0, 0.55);
+    background-size: cover;
+    background-position: 50%;
+    background-blend-mode: overlay;
+}
+.current-place {
+    color: hsla(0,0%,100%,.65);
+    transition: all .3s ease-out;
+}.city {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0;
+    margin: 2rem 0;
+    border-top: 1px solid hsla(0,0%,100%,.04);
+    border-bottom: 1px solid hsla(0,0%,100%,.04);
+}
+.more-info{
+    border-top: 1px solid rgba(255, 255, 255, 0.356);
+    margin: 20px;
+    color: #e9e4e4;
+}

@@ -1,0 +1,47 @@
+        .day{
+        
+            display: flex;
+            align-items: center;
+         
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .card{
+            width:20%;
+            padding: 15px 22px;
+            text-align: center;
+            margin: 1px;
+        }  
+
+
+        .card .hover{
+                box-shadow: 2px 2px 12px 1px #fdfdfd;
+                border:none;
+            }
+        .img-icon{
+            position: relative;
+            padding: 12px 0 12px 36px;
+            margin: 20px;
+            display: inline-flex;
+            align-items: center;
+         }
+         .humid, .temp-dc,  .wind {
+            position: relative;
+            padding: 12px 0 12px 36px;
+            font-size: 18px;
+            margin: 20px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .description{
+            font-size: 15px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .date{
+            font-size: 15px;
+            text-align: center;
+        }
+        .i{
+            font-size: 40px;
+            color:#5a9de7
+        }

@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Weather</span>
+      <span class="spacer"></span>
+      <button mat-raised-button class="btn btn-head" 
+ aria-label="Home" class="btn-head mr-3" 
+ [routerLink]="'/'">
+  Home
+ </button>
+
+ <button mat-raised-button class="btn btn-danger"
+  aria-label="Favorite City"
+ [routerLink] = "'/favorites'">
+   <mat-icon>favorite</mat-icon>
+ </button>
+      <app-menu style="margin-left: 10px;"
+        [options]="options$ | async"
+        (themeChange)="themeChangeHandler($event)">
+      </app-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>

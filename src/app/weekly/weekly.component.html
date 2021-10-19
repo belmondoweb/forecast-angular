@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="forecast" *ngIf="forecast  != undefined && forecast != null">
+      
+      <div class="day">
+  
+        <div class="card px-0 mb-0" *ngFor="let day of forecast.list;"> 
+          <div class="d-flex justify-content-center">
+            <div style="font-weight: bolder;">
+              <div class="date">{{day?.dt_txt*1000 | date: 'MMMM d'}}</div>
+              <img [src]="weatherIconURL +day?.weather[0].icon +'.png'"> 
+              <h3 class="temp">{{day?.main.temp}}&deg;</h3>
+              <span>
+                min:{{day?.main.temp_min }}&deg;
+              </span>
+              max  {{day?.main.temp_max}}&deg;
+              <h2 class="description">{{day.weather[0].description}}</h2> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

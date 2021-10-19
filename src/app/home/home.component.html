@@ -1,0 +1,85 @@
+<div class="container mat-drawer-container marg-top">
+    <div class="container home-page">
+        <div class="d-flex justify-content-center">
+            <!-- search -->
+            <div class="search-box my-3">
+                <form (ngSubmit)=onSubmit(f) #f="ngForm">
+                    <div class="row">
+                        <!-- search city input -->
+                        <div class="col-8">
+                            <input type="text" class="form-control" name="city" ngModel #city="ngModel"
+                                placeholder="Name of a city">
+                        </div>
+                        <!-- search units input -->
+                        <div class="col-3">
+                            <div class="form-group">
+                                <select id="temp" class="form-control" placeholder="units"name="temp" ngModel #temp="ngModel" required>
+                                    <option value="metric">metric</option>
+                                    <option value="imperial">imperial</option>
+                                    <option value="standard">standard</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <button class="btn btn-warning " name="button">+</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- search form ends  -->
+        </div>
+
+        <!-- weatherinfo container -->
+        <div class="theme-box mt-sm-3 mb-3">
+            <div class="row">
+                <!-- main city info  -->
+                <div class="col-sm-6 ">
+                    <div class="highlight">
+                        <div class="location">{{weatherData?.name}} </div>
+                        <div class="temp"><span> {{weatherData?.main.temp}}</span><sup>°c</sup></div>
+                        <div class="icon"><img [src]="weatherIconURL + weatherData?.weather[0].icon +'.png'"> </div>
+                        <span>{{weatherData?.description}}</span>
+                    </div>
+                </div>
+                <!-- button favorite  -->
+                <div class="col-sm-6 ">
+                    <div class="d-flex justify-content-sm-end justify-content-center">
+                        <i class="fa fa-heart d-flex align-items-center mr-3"(click)="onClick()" routerLink="/favorites"
+                            [class.heart-icon]="isAddToFavorites" aria-hidden="true"></i>
+                        <button mat-raised-button color="accent" routerLink="/favorites"
+                            (click)="onSave(weatherData)">Add to Favorites</button>
+                    </div>
+                </div>
+                <!-- main more city info -->
+                <div class="d-flex justify-content-sm-start justify-content-center">
+                    <div class="more-info">
+
+                        <div class="humid">Humidity:{{weatherData?.main.humidity}}</div>
+                        <div class="wind">↓ S {{weatherData?.main.pressure}} mt/s</div>
+                        <div class="temp-dc">
+                            <span>
+                                <small>HI</small>{{weatherData?.main.temp_max}} <sup>°c</sup>
+                            </span>
+                            <span>
+                                <small>LO</small>{{weatherData?.main.temp_min}} <sup>°c</sup>
+                            </span>
+
+                        </div>
+                    </div>
+        <!-- 5 day forcast -->
+        <div>
+            <div class="d-flex justify-content-sm-end">
+            <button class="btn btn-warning" (click)="onForecast()">Hourly</button>
+            <button class="btn btn-primary " (click)="weekly()">5 Day</button>
+            <div class="wether-details ">
+            </div>
+            </div>
+        </div> 
+        <!-- home container finito la camedia lol -->
+      </div>
+                </div>
+                <div class="row">
+                    <app-forcast [forecastHours]="forecastHours"></app-forcast>
+                    <app-weekly [forecast]="forecast"></app-weekly>
+                </div>        
+       </div>

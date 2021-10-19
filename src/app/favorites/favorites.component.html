@@ -1,0 +1,56 @@
+
+
+<div class="bg-img">
+
+    
+    <h2 class="wether-details">City List</h2>
+      <div class="ng-content">
+      <div class="favorites marg-top">
+        <div class="wether-details">
+            <div class="row"*ngIf="weatherData  && weatherData!= null; else valid">
+        
+            <ul class="px-0 mb-0">
+              
+                    <li >
+                        <div class="card"  routerLink="/">
+                            <h1>{{weatherData.name}}</h1>
+                            <h1>  {{weatherData?.main.temp}}°</h1>
+                            <div class="highlight">
+                            <div class="d-flex justify-content-center">
+                                <div class="humid">Humidity:{{weatherData.main.humidity}}</div>
+                                <div class="wind">↓ S {{weatherData?.main.pressure}} mt/s</div>
+                                <div class="temp-dc">
+                                    <span>
+                                    <small>HI</small>{{weatherData?.main.temp_max}} <sup>°c</sup>
+                                     </span>
+                                   <span>
+                                    <small>LO</small>{{weatherData?.main.temp_min}} <sup>°c</sup>
+                                   </span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        </li>
+                </ul>
+                </div>
+            </div>
+    </div>
+  </div>
+<ng-template #valid>
+    <h4> No city yeat</h4>
+</ng-template>
+</div>
+
+
+    <!-- <div class="card">
+        <div *ngIf="weatherData">
+            <h2>Weather list:</h2>
+          <ul> 
+            <li *ngFor="let city of weatherData;" style="font-weight: bolder;">
+              <h4>
+                 {{city?.name}}  {{city.main.temp}}°:{{city.weather[0].description}}
+              </h4> 
+             </li>
+          </ul>
+        </div>
+        </div> -->

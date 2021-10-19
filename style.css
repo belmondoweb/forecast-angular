@@ -1,0 +1,18 @@
+.box {
+  width:80px;
+  height: 80px;
+  margin: 0 0.6rem;
+  background: #7b0897;
+  border: #a3a3ee 0.2rem solid;
+  border-radius: 0.2rem; float: left;
+
+}
+.item{
+width:60px;
+height: 60px;
+background-color:rgb(248, 248, 14);
+align-content: center;
+}
+.hide {
+  display: none;
+}
