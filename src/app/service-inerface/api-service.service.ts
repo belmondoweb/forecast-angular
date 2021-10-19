@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
+// import { environment } from 'src/environments/environment';
 import { WEATHER_ITEMS } from './models.ts/weather.data';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -27,7 +27,7 @@ export class ApiServiceService {
       return this.http.get(`http://api.openweathermap.org/data/2.5/weather?appid=efe5cf80014b819a0d87795088944e35&lat=${lat}&lon=${lon}&units=imperial`).pipe(
         catchError(this.handleError)
       );
-      // return this.http.get(`${environment.api}weather?appid=${environment.api_key}&lat=${lat}&lon=${lon}&units=imperial`).pipe(
+      // return this.http.get(`${environment.api}weather?appid=efe5cf80014b819a0d87795088944e35&lat=${lat}&lon=${lon}&units=imperial`).pipe(
       //   catchError(this.handleError)
       // );
     }
@@ -51,7 +51,9 @@ export class ApiServiceService {
   
 fetchrCityUnits(name:any, units:any): Observable<Weather[]> {
   return this.http.get<Weather[]>
-(`${environment.api}weather?appid=${environment.api_key}&q=${name}&units=${units}&cnt=6`).pipe(
+  // (`${environment.api}weather?appid=efe5cf80014b819a0d87795088944e35&q=${name}&units=${units}&cnt=6`)
+ (`http://api.openweathermap.org/weather?appid=&q=${name}&units=${units}&cnt=6`)
+.pipe(
     retry(1),
     catchError(this.handleError)   
   );
@@ -59,7 +61,7 @@ fetchrCityUnits(name:any, units:any): Observable<Weather[]> {
 
 
 otherWeather(city:string, units:any){
-  return this.http.get(`${environment.api}weather?appid=${environment.api_key}&q=${city}&units=${units}&cnt=6`)
+  return this.http.get(`http://api.openweathermap.org/data/2.5/weather?appid=efe5cf80014b819a0d87795088944e35&q=${city}&units=${units}&cnt=6`)
 .pipe(
   retry(1),
   catchError(this.handleError)
@@ -69,7 +71,7 @@ geoForecast(lat: any, lon:any):Observable<any>{
   // let params= new HttpParams()
   //     .set('lat',lat)
   //     .set('lon',lon)
-  return this.http.get(`${environment.api}forecast?&exclude=hourly,minutely&lat=${lat}&lon=${lon}&appid=${environment.api_key}&cnt=6`)
+  return this.http.get(`http://api.openweathermap.org/data/2.5/forecast?&exclude=hourly,minutely&lat=${lat}&lon=${lon}&appid=efe5cf80014b819a0d87795088944e35&cnt=6`)
   .pipe(
     retry(1),
     catchError(this.handleError)
@@ -77,7 +79,7 @@ geoForecast(lat: any, lon:any):Observable<any>{
 }
 
 WeeklyForecast(city:string):Observable<any>{
-  return this.http.get(`${environment.api}forecast?&exclude=hourly,minutely&daily?&q=${city}&cnt=6&appid=${environment.api_key}`)
+  return this.http.get(`http://api.openweathermap.org/data/2.5/forecast?&exclude=hourly,minutely&daily?&q=${city}&cnt=6&appid=efe5cf80014b819a0d87795088944e35`)
   .pipe(
     retry(1),
     catchError(this.handleError)
@@ -96,7 +98,7 @@ hourForecast(city:string):Observable<any>{
 }
 
 otherForecast(city:string):Observable<any>{
-  return this.http.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${environment.api_key}&cnt=8&units=metrics`)
+  return this.http.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=efe5cf80014b819a0d87795088944e35&cnt=8&units=metrics`)
   .pipe(
    
     retry(1),
@@ -133,8 +135,6 @@ otherForecast(city:string):Observable<any>{
       N.Peretz team`);
     };
 
-
-// no
 
 
 

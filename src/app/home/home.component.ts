@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiServiceService } from '../service-inerface/api-service.service';
-import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
-// import 'rxjs/add/operator/do';
+import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Observable} from 'rxjs';
 import { Weather } from '../service-inerface/models.ts/weather';
-import { Forecast, ForecastCl } from '../service-inerface/models.ts/forecast';
-import { pluck } from 'rxjs/operators';
+import { Forecast } from '../service-inerface/models.ts/forecast';
+// import { pluck } from 'rxjs/operators';
 
 
 
@@ -91,8 +90,8 @@ export class HomeComponent implements OnInit {
     this.weatherService.otherWeather(weatherForm.value.city, weatherForm.value.temp).subscribe(
       (data) => {
         this.weatherData =data
-        this.weatherData.push(data); 
-         this.weatherArray.push(this.addWeatherGroup());
+        // this.weatherData.push(data); 
+        //  this.weatherArray.push(this.addWeatherGroup());
       })
 
     this.weatherService.otherForecast(weatherForm.value.city).subscribe(
@@ -129,10 +128,11 @@ weekly(){
   onSave(form:any) {
     this.weatherService.addWeatherItem(this.form.value)
     // or local
-    let cityArr
+    let cityArr:any
         if(this.weatherData !== null){
           cityArr =[]
           }else{
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             cityArr = JSON.parse(this.weatherData);
           }
         localStorage.setItem('FAVLIST', JSON.stringify(form));
@@ -145,7 +145,7 @@ weekly(){
   onClick(){
     this.saveCity.emit(this.weatherData)
   }
-  ngOnDestroy() {this.getLocation}
+  ngOnDestroy() {}
 
 
 }
