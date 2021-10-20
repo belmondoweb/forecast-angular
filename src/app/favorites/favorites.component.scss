@@ -4,8 +4,12 @@ h2{
 h1{
     color: rgba(230, 30, 23, 0.856);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    align-items: center;
+    text-align: center;
     font-weight: 800;
+    @media (max-width:490px) {
+        font-weight: 500;
+    }
+
 }
 .wether-details{           
     display: flex;
@@ -21,16 +25,20 @@ h1{
             margin:6px;
         }
     }
+    .mat-card.mat-card.mat-focus-indicator {
+        width: 80%;
+        /* justify-items: center; */
+        margin: 0 auto;}
     .card{
-        width:100%;
+        width:80%;
         padding: 15px 22px;
         text-align: center;
         &:hover{
             box-shadow: 2px 2px 12px 1px #e9e4e4;
             border:none;
         }
-        @media (max-width:490px) {
-            width:124px;
+        @media (max-width:390px) {
+            width:150px
         }
         i{
             font-size: 40px;

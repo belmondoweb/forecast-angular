@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ApiServiceService } from '../service-inerface/api-service.service';
-import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Observable} from 'rxjs';
 import { Weather } from '../service-inerface/models.ts/weather';
 import { Forecast } from '../service-inerface/models.ts/forecast';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 // import { pluck } from 'rxjs/operators';
 
 
@@ -11,16 +11,16 @@ import { Forecast } from '../service-inerface/models.ts/forecast';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
-  weatherIconURL = 'https://openweathermap.org/img/w/';
+
+weatherIconURL =  'https://openweathermap.org/img/w/';
   cities$: Observable<any> | any;
   @Input()weatherData: Observable<Weather[]> | any;
-  // weatherData: any=[];/
-  weatherIndex: any;
-
+  weather: []=[]
+  weatherIndex: Weather|any;
   forecastHours: Forecast[]=[];
   forecast: Forecast[]=[];
   @Output() saveCity:EventEmitter<any>=new EventEmitter<any>();
@@ -60,8 +60,8 @@ export class HomeComponent implements OnInit {
         this.weatherService.fetchDataByCoords(this.lat, this.lon).subscribe(data => {
           this.weatherData = data;
           this.city = data.name;
-          debugger;
-          setTimeout(() => this.weatherService.fetchDataByCoords(this.lat, this.lon), 5000);
+          setTimeout(() => this.weatherService.fetchDataByCoords(this.lat, this.lon),
+          1000);
 
           this.weatherService.geoForecast(this.lat, this.lon)
           // check for Geolocation support
@@ -86,12 +86,10 @@ export class HomeComponent implements OnInit {
   }
   // ********** Get data for city search  **********//
 
-  onSubmit(weatherForm: NgForm) {
+  onSubmit(weatherForm:NgForm) {
     this.weatherService.otherWeather(weatherForm.value.city, weatherForm.value.temp).subscribe(
       (data) => {
         this.weatherData =data
-        // this.weatherData.push(data); 
-        //  this.weatherArray.push(this.addWeatherGroup());
       })
 
     this.weatherService.otherForecast(weatherForm.value.city).subscribe(
@@ -126,26 +124,21 @@ weekly(){
  
   // ******** Save to List *********** //
   onSave(form:any) {
-    this.weatherService.addWeatherItem(this.form.value)
-    // or local
     let cityArr:any
         if(this.weatherData !== null){
           cityArr =[]
           }else{
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            cityArr = JSON.parse(this.weatherData);
+            cityArr = JSON.parse( this.weatherData);
           }
-        localStorage.setItem('FAVLIST', JSON.stringify(form));
+          debugger;
+        localStorage.setItem('FAVLIST', JSON.stringify( this.weatherData));
   }
-  get weatherArray(){
-    return this.form.get('weather') as FormArray;
-    }
+  
  
+  ngOnDestroy() {
 
-  onClick(){
-    this.saveCity.emit(this.weatherData)
   }
-  ngOnDestroy() {}
 
 
 }

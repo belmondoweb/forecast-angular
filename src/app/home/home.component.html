@@ -7,7 +7,7 @@
                     <div class="row">
                         <!-- search city input -->
                         <div class="col-8">
-                            <input type="text" class="form-control" name="city" ngModel #city="ngModel"
+                            <input type="text" class="form-control"  Autocomplete="auto" name="city" ngModel #city="ngModel"
                                 placeholder="Name of a city">
                         </div>
                         <!-- search units input -->
@@ -43,11 +43,9 @@
                 </div>
                 <!-- button favorite  -->
                 <div class="col-sm-6 ">
-                    <div class="d-flex justify-content-sm-end justify-content-center">
-                        <i class="fa fa-heart d-flex align-items-center mr-3"(click)="onClick()" routerLink="/favorites"
-                            [class.heart-icon]="isAddToFavorites" aria-hidden="true"></i>
-                        <button mat-raised-button color="accent" routerLink="/favorites"
-                            (click)="onSave(weatherData)">Add to Favorites</button>
+                    <div class="d-flex justify-content-sm-end">
+                       <button mat-raised-button color="accent" routerLink="/favorites" 
+                            (click)="onSave(f.value)"> <mat-icon>favorite</mat-icon> Add to Favorites</button>
                     </div>
                 </div>
                 <!-- main more city info -->
@@ -67,7 +65,7 @@
                         </div>
                     </div>
         <!-- 5 day forcast -->
-        <div>
+        <div class=buttons>
             <div class="d-flex justify-content-sm-end">
             <button class="btn btn-warning" (click)="onForecast()">Hourly</button>
             <button class="btn btn-primary " (click)="weekly()">5 Day</button>

@@ -1,10 +1,8 @@
 
-  import { Forecast } from "./forecast";
-import { City } from "./icity";
+
 
   export class Weather {
     constructor(public name:string,
-                // public temp:any,
                 public temp_min:any,
                 public temp_max:any,
                 public description: string,

@@ -1,9 +1,7 @@
-import { Component, Input, OnInit, Output, Renderer2 } from '@angular/core';
-
+import { Component,OnInit} from '@angular/core';
 import { ApiServiceService } from '../service-inerface/api-service.service';
-
 import { EventEmitterService } from '../service-inerface/event-emitter.service';
-import { Forecast } from '../service-inerface/models.ts/forecast';
+
 import { Weather } from '../service-inerface/models.ts/weather';
 
 @Component({
@@ -12,29 +10,30 @@ import { Weather } from '../service-inerface/models.ts/weather';
   styleUrls: ['./favorites.component.scss']
 })
 export class FavoritesComponent implements OnInit {
-
-  favData:any=[];
-  
-  favoritesData:any;
-  // forecast:Forecast[]=[];
-  weatherData: Weather[] |any;
-  darkTheme = false;
+  currCity:Weather[]|any;
+  cityList:Weather[]=[];
+  city:any=[];
+    weatherIconURL =  'https://openweathermap.org/img/w/';
   constructor(private weatherService: ApiServiceService, private eventEmitterService: EventEmitterService) { 
 
   }
 
   ngOnInit() {
-  this.weatherData =JSON.parse((this.weatherData, localStorage.getItem('FAVLIST') )||'{}');;
 
-  this.getCityList()
-
+  this.city= this.weatherService.favoriesList$.pipe().subscribe(
+      res =>{
+        this.currCity=res;
+        // console.log(res); 
+        return res;
+      }
+    )
+    // let data =(localStorage.getItem('FAVLIST'))|| {};
+    this.weatherService.favouritesList.next(this.cityList);
+    this.city =JSON.parse(( localStorage.getItem('FAVLIST'))||'[]');
+    
+    
 }
 
 
+}
 
-//  }
-getCityList(){
-  this.weatherService.getWeatherItems()
-}
-}
-  
